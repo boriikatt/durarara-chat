@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anonymous Chat</title>
     
-    <!-- 
-      FIX #1: Swapped the script for a pre-compiled Tailwind CSS file.
-      This is much more likely to load in Firefox from a file:/// path.
-    --><link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     
-    <!-- Google Font: JetBrains Mono --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     
-    <!-- Custom styles for the DRRR!! theme --><style>
+    <style>
         body {
 	    font-family: 'JetBrains Mono', monospace;
 	    background-color: #f0f0f0;
@@ -596,87 +593,55 @@
         
     </style>
 </head>
-<!-- 
-  CHANGE #1: Removed 'h-screen' from the body class.
-  The height is now controlled by the CSS in the <style> tag.
--->
 <body class="w-screen">
 
-    <!-- 
-      App container: Holds both login and chat views
-    --><div id="app-container" class="w-full h-full flex flex-col items-center justify-center"> <!-- Center the content -->
-        
-        <!-- 
-          Password View: New screen, shown first
-        --><div id="password-view" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4">
+    <div id="app-container" class="w-full h-full flex flex-col items-center justify-center"> <div id="password-view" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4">
             
-            <!-- Logo -->
             <div class="flex-shrink-0">
-                <img src="https://raw.githubusercontent.com/boriikatt/drrr-chat/ea76ab0d27004bd9028e2ab492dd29f7d69ee9cb/logo.png" alt="Logo" class="max-w-sm w-full mb-1">
+                <img src="https://raw.githubusercontent.com/boriikatt/drrr-chat/ea76ab0d27004bd9028e2ab492dd29f7d69ee9cb/logo.png" alt="Logo" class="max-w-xl w-full mb-0">
             </div>
             
-            <!-- Password Box -->
             <div class="login-box w-full max-w-sm p-6 sm:p-8 rounded-lg text-center pt-0 -mt-4">
                 
-                <!-- This div constrains the width of the inputs to be narrow --><div class="w-full max-w-[280px] mx-auto">
-                    <!-- This div now correctly spaces the input and button --><div class="space-y-4"> <!-- Increased spacing --><!-- Password Input --><div>
+                <div class="w-full max-w-[280px] mx-auto">
+                    <div class="space-y-4"> <div>
                             <input type="password" id="password-input" class="">
                         </div>
 
-                        <!-- Enter Button --><button id="password-btn" class="" disabled>ENTER</button>
+                        <button id="password-btn" class="" disabled>ENTER</button>
                         
-                        <!-- Error Message --><p id="password-error" class="text-red-500 text-sm text-center pt-2"></p>
+                        <p id="password-error" class="text-red-500 text-sm text-center pt-2"></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 
-          Login View: Fullscreen overlay
-        --><div id="login-view" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div id="login-view" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
             <div class="login-box w-full max-w-md p-4 sm:p-8 rounded-lg">
-                <!-- <h1 class="text-2xl sm:text-3xl text-center mb-6 text-white">[ Create Your Profile ]</h1> --><!-- REMOVED --><div class="space-y-6"> <!-- Increased spacing -->
-                    
-                    <!-- NEW Icon Picker (Label Removed) -->
-                    
-                    <div>
-                        <!-- UPDATED: Changed from flex-wrap to a 4-column grid -->
+                <div class="space-y-6"> <div>
                         <div id="icon-picker" class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 justify-center max-w-xs mx-auto">
-                            <!-- Icons will be injected by JS -->
-                        </div>
+                            </div>
                     </div>
                     
 
-                    <!-- Color Picker (REMOVED) -->
-
-                    <!-- Username Input (Label Removed) -->
                     <div>
                         <input type="text" id="username-input" placeholder="" class="login-input w-full" maxlength="20">
                     </div>
 
-                    <!-- Join Button (Wrapped for centering) -->
                     <div class="w-full flex justify-center !mt-8">
                         <button id="join-btn" class="join-btn-drrr" disabled>Join</button>
                     </div>
                     
-                    <!-- User ID Display (REMOVED) -->
-                </div>
+                    </div>
             </div>
         </div>
 
-        <!-- 
-          Chat View: Main application
-        --><div id="chat-view" class="w-full h-full flex flex-col hidden"> <!-- Main container -->
-            
-            <!-- Message input form (Top) -->
-            <footer class="flex-shrink-0 p-4">
+        <div id="chat-view" class="w-full h-full flex flex-col hidden"> <footer class="flex-shrink-0 p-4">
                 <form id="message-form" class="flex flex-col items-center gap-2 max-w-lg mx-auto">
                     
-                    <!-- Container for Message Box and Exit Button -->
                     <div class="w-full flex items-start">
                         <textarea id="message-input" placeholder="" class="drrr-input w-full" rows="3"></textarea>
                         
-                        <!-- Exit Button (Minimal) -->
                         <button type="button" id="logout-button">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="currentColor" d="M16 17v-3H9v-4h7V7l5 4-5 4m-7 8c-1.11 0-2-.89-2-2V4a2 2 0 012-2h7a2 2 0 012 2v2h-2V4H9v16h7v-2h2v2a2 2 0 01-2 2Z"/>
@@ -684,16 +649,13 @@
                         </button>
                     </div>
                     
-                    <!-- Centered "POST!" Button -->
                     <div class="w-full flex justify-center mt-2">
                         <button type="submit" id="send-btn" class="drrr-btn">POST!</button>
                     </div>
                 </form>
             </footer>
 
-            <!-- Main chat window (Bottom) -->
             <main id="chat-window" class="flex-1 overflow-y-auto space-y-3 p-4">
-                <!-- Messages will be injected here -->
                 <div class="notification">
                     Connecting to server...
                 </div>
@@ -702,7 +664,7 @@
         </div>
     </div>
 
-    <!-- Firebase SDK --><script type="module">
+    <script type="module">
         // Import Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { 
@@ -842,7 +804,7 @@
             },
             'icon15': {
                 color: '#e0809b',
-                pngUrl: 'https://raw.github.com/boriikatt/drrr-chat/blob/ea76ab0d27004bd9028e2ab492dd29f7d69ee9cb/icon15.png'
+                pngUrl: 'https://raw.github.com/boriikatt/drrr-chat/blob/ea76ab0d27004bd9028e2ab492dd29f7d69ee9cb/icon15.png?raw=true'
             },
             'icon16': {
                 color: '#e79e8b',
@@ -872,20 +834,24 @@
 
         // --- Firebase Config (GLOBAL VARS) ---
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'drrr-chat-default';
-		// let firebaseConfig; ← REMOVE THIS LINE
+        let firebaseConfig;
 
-		// --- USER-CONFIG-START ---
-		// ✅ FIXED Firebase configuration
-		const firebaseConfig = {
-		  apiKey: "AIzaSyB0J1CpwX5G3m2UQf4cf-EZ-sCiC-vpzZQ",
-		  authDomain: "chat--prod.firebaseapp.com",
-		  projectId: "chat--prod",
-		  storageBucket: "chat--prod.appspot.com",
-		  messagingSenderId: "793141699131",
-		  appId: "1:793141699131:web:9181deafe9b95aaa02b21e",
-		  measurementId: "G-EBXYR0ZETJ"
-		};
+        // --- USER-CONFIG-START ---
+        
+        // FIX #2: Pasted in your specific Firebase config block.
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const localFirebaseConfig = {
+          apiKey: "AIzaSyB0J1CpwX5G3m2UQf4cf-EZ-sCiC-vpzZQ",
+          authDomain: "chat--prod.firebaseapp.com",
+          projectId: "chat--prod",
+          storageBucket: "chat--prod.firebasestorage.app",
+          messagingSenderId: "793141699131",
+          appId: "1:793141699131:web:9181deafe9b95aaa02b21e",
+          measurementId: "G-EBXYR0ZETJ"
+        };
+        
         // --- USER-CONFIG-END ---
+
 
         // --- Helper Functions (Defined early to be available) ---
         
@@ -940,7 +906,17 @@
         try {
             // Try to get config from the platform first
             firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null; 
-            console.log("Using local Firebase config.");
+            if (!firebaseConfig) {
+                // If not available, use the local config
+                if (typeof localFirebaseConfig !== 'undefined' && localFirebaseConfig.apiKey) { // Check if apiKey exists
+                    firebaseConfig = localFirebaseConfig;
+                    console.log("Using local Firebase config.");
+                } else {
+                    throw new Error("Firebase config is not available.");
+                }
+            } else {
+                console.log("Using platform Firebase config.");
+            }
         } catch (e) {
             console.error("Failed to parse Firebase config:", e);
             // Show the error on the password screen instead of making it blank
@@ -1643,8 +1619,3 @@
 
 </body>
 </html>
-
-
-
-
-
