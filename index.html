@@ -485,11 +485,13 @@
 	  align-items: center;
 	  margin: 0 auto 2rem auto;
 	  position: relative;
-	  background-image: url('https://github.com/boriikatt/drrr-chat/blob/1ccf3e117daf57756883058ec2ea9a2e7e027cc9/logod-removebg-preview.png');  /* UPDATED PNG as background */
-	  background-size: 85%;  /* UPDATED: Changed from '80%' to '85%' */
+
+	  /* Use the PNG file from this repository (relative path) */
+	  background-image: "https://github.com/boriikatt/drrr-chat/blob/6b279deb60ba33b7588741b0575bf0f3937b5dce/logod-removebg-preview.png";
+	  background-size: 85%;
 	  background-position: center;
 	  background-repeat: no-repeat;
-	  opacity: 1.0;  /* UPDATED: from 0.7 */
+	  opacity: 1.0;
 	}
 
 	/* .drrr-logo-image { ... } */  /* Removed since we're not using <img> anymore */
@@ -664,8 +666,17 @@
                 
                 <!-- DOLLARS Logo with bigger circle and white text -->
 		<div class="drrr-logo-container">
-		  <!-- PNG now handled as CSS background; text overlay here -->
-		  <div class="drrr-logo-text"></div>
+		  <!-- Diagnostic test (temporary) -->
+		  <div style="border:1px solid red; width:300px; height:300px; display:flex; align-items:center; justify-content:center;">
+		    <img
+			src="https://github.com/boriikatt/drrr-chat/blob/6b279deb60ba33b7588741b0575bf0f3937b5dce/logod-removebg-preview.png"
+ 			style="width:85%; height:85%; object-fit:contain; display:block; margin:auto;"
+			alt="DOLLARS logo (test)"
+		    >
+		  </div>
+	
+		<!-- keep the overlay text container if you need it for later -->
+	 	<div class="drrr-logo-text"></div>
 		</div>
                 
                 <!-- This div constrains the width of the inputs to be narrow --><div class="w-full max-w-[280px] mx-auto">
